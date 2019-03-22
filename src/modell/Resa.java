@@ -16,29 +16,28 @@ public class Resa {
 		this.hemDatum = hemDatum;
 	}
 	
-	private HashMap<String, Recension> recensionList = new HashMap<String, Recension>();
-
-	public HashMap<String, Recension> getRecensionList() {
+	private ArrayList <Recension> recensionList = new ArrayList <Recension>();
+		
+	
+	public ArrayList<Recension> getRecensionList() {
 		return recensionList;
 	}
-	public void setRecensionList(HashMap<String, Recension> recensionList) {
+	public void setRecensionList(ArrayList<Recension> recensionList) {
 		this.recensionList = recensionList;
 	}
 	
-	public String addRecension(Recension recension) {
-				recensionList.put(key, recension);
-				return key;	
+	public void addRecension(Recension r) {
+		this.recensionList.add(r);
+}
+	
+	public Recension findRecension(String pNr) {
+		for(Recension tmp : recensionList) {
+			if(tmp.getKund().getpNr().equals(pNr)) {
+				return tmp;
 			}
 		}
 		return null;
-	}
-	
-	
-	public Recension findRecension(String personnummer) {	
-		Recension tmp = recensionList.get(personnummer);
-		return tmp;
 }
-		
 	
 	public String getReseId() {
 		return reseId;
