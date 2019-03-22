@@ -23,7 +23,7 @@ public class Kund {
 	
 	public void addRecension(Recension r) {
 		this.recensionList.add(r);
-}
+	}
 	
 	public Recension findRecension(String reseId) {
 		for(Recension tmp : recensionList) {
@@ -32,7 +32,7 @@ public class Kund {
 			}
 		}
 		return null;
-}
+	}
 	
 	//getters
     public String getNamn(){
@@ -85,7 +85,5 @@ public class Kund {
     public void setEmail(String email){
         this.email = email;
     }
-
-    //recensionsmetoder etc inte lagts till
 
 }
