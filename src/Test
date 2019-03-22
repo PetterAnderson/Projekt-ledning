@@ -1,0 +1,14 @@
+public class Test {
+
+
+    public static void main(String[] args) {
+        KundRegister kundRegister = new KundRegister();
+        Controller controller = new Controller(kundRegister);
+
+        controller.addKund("123", "Daniel", 3, "Vegan", "Rörsjögatan 9", "Rörsjögatan 9", "0768565687", "gmail");
+        controller.addKund("124", "Danieel", 3, "Vegan", "Rörsjögatan 9", "Rörsjögatan 9", "0768565687", "gmail");
+
+        System.out.println(controller.sortByDansExpertis(3));
+    }
+}
+
