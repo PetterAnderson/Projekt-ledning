@@ -14,24 +14,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JSlider;
-import javax.swing.ImageIcon;
-import java.awt.CardLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class view {
 
 	private JFrame frame;
-	private JTextField txtEnterNamn;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JLayeredPane layeredPane;
-	private JPanel panelNyKund;
-	private JPanel panelKundRegister;
-	private JPanel panelEmailUtskick;
 
 	/**
 	 * Launch the application.
@@ -48,6 +34,7 @@ public class view {
 			}
 		});
 	}
+
 	
 	public void switchPanels (JPanel panel){
 		layeredPane.removeAll();
@@ -55,7 +42,7 @@ public class view {
 		layeredPane.repaint();
 		layeredPane.revalidate();
 		}
-	
+
 
 	/**
 	 * Create the application.
@@ -63,8 +50,6 @@ public class view {
 	public view() {
 		initialize();
 	}
-	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -73,7 +58,7 @@ public class view {
 		frame.setBounds(100, 100, 1141, 866);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		layeredPane = new JLayeredPane();
 		layeredPane.setBounds(10, 101, 1105, 715);
 		frame.getContentPane().add(layeredPane);
