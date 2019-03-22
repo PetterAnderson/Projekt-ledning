@@ -1,3 +1,5 @@
+package modell;
+
 public class Kund {
     private String pNr;
     private String namn;
