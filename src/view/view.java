@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class view {
 
@@ -196,6 +198,10 @@ public class view {
 		lblNewLabel_1.setBounds(0, 0, 46, 14);
 		panelEmailUtskick.add(lblNewLabel_1);
 		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(10, 26, 5, 22);
+		panelEmailUtskick.add(textArea);
+		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(new Color(204, 255, 255));
@@ -206,6 +212,7 @@ public class view {
 		panelKundRegister.add(scrollPane);
 		
 		table = new JTable();
+		table.setAutoCreateRowSorter(true);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
