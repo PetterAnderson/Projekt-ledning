@@ -18,6 +18,9 @@ import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class view {
 
@@ -32,6 +35,7 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -197,9 +201,22 @@ public class view {
 		panelKundRegister.setBackground(new Color(204, 255, 255));
 		panelKundRegister.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("register");
-		lblNewLabel_2.setBounds(0, 0, 46, 14);
-		panelKundRegister.add(lblNewLabel_2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 1085, 693);
+		panelKundRegister.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Namn", "Email", "Personnummer", "Dansexpertis"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(118);
+		table.getColumnModel().getColumn(1).setPreferredWidth(246);
+		table.getColumnModel().getColumn(2).setPreferredWidth(182);
+		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.addActionListener(new ActionListener() {
