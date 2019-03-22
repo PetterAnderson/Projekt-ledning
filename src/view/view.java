@@ -33,6 +33,52 @@ public class view {
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					view window = new view();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public void switchPanels (JPanel panel){
+		layeredPane.removeAll();
+		layeredPane.add(panel);
+		layeredPane.repaint();
+		layeredPane.revalidate();
+		}
+	
+
+	/**
+	 * Create the application.
+	 */
+	public view() {
+		initialize();
+	}
+	
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 1141, 866);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		layeredPane = new JLayeredPane();
+		layeredPane.setBounds(10, 101, 1105, 715);
+		frame.getContentPane().add(layeredPane);
+		layeredPane.setLayout(new CardLayout(0, 0));
+		
 		panelNyKund = new JPanel();
 		layeredPane.add(panelNyKund, "name_720098961090600");
 		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 153, 0)));
@@ -154,3 +200,32 @@ public class view {
 		JLabel lblNewLabel_2 = new JLabel("register");
 		lblNewLabel_2.setBounds(0, 0, 46, 14);
 		panelKundRegister.add(lblNewLabel_2);
+		
+		JButton btnNewButton = new JButton("Kundregister");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				switchPanels(panelKundRegister);
+			}
+		});
+		btnNewButton.setBounds(75, 38, 109, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Email-utskick");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				switchPanels(panelEmailUtskick);
+			}
+		});
+		btnNewButton_1.setBounds(829, 38, 127, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Ny Kund");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				switchPanels(panelNyKund);
+			}
+		});
+		btnNewButton_2.setBounds(463, 38, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
+	}
+}
