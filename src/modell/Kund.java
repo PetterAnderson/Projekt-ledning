@@ -1,5 +1,7 @@
 package modell;
 
+import java.util.ArrayList;
+
 public class Kund {
     private String pNr;
     private String namn;
@@ -9,8 +11,30 @@ public class Kund {
     private String faktureringsadress;
     private String telefonNummer;
     private String email;
+    
+    private ArrayList <Recension> recensionList = new ArrayList <Recension>();
 
-    //getters
+    public ArrayList<Recension> getRecensionList() {
+		return recensionList;
+	}
+	public void setRecensionList(ArrayList<Recension> recensionList) {
+		this.recensionList = recensionList;
+	}
+	
+	public void addRecension(Recension r) {
+		this.recensionList.add(r);
+}
+	
+	public Recension findRecension(String reseId) {
+		for(Recension tmp : recensionList) {
+			if(tmp.getResa().getReseId().equals(reseId)) {
+				return tmp;
+			}
+		}
+		return null;
+}
+	
+	//getters
     public String getNamn(){
         return namn;
     }
@@ -44,7 +68,7 @@ public class Kund {
         this.pNr = pNr;
     }
     public void setDansExpertis(int DansExpertis){
-        this.dansExpertis = dansExpertis;
+        this.dansExpertis = DansExpertis;
     }
     public void setAllergi(String allergi){
         this.allergi = allergi;
