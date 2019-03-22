@@ -184,6 +184,12 @@ public class view {
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
 		
+		JLabel lblDansExpertis = new JLabel("Dans Expertis");
+		lblDansExpertis.setForeground(Color.DARK_GRAY);
+		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDansExpertis.setBounds(561, 554, 198, 14);
+		panelNyKund.add(lblDansExpertis);
+		
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
