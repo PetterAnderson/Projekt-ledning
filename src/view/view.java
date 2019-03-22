@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JComboBox;
 
 public class view {
 
@@ -199,8 +200,16 @@ public class view {
 		panelEmailUtskick.add(lblNewLabel_1);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 26, 5, 22);
+		textArea.setBounds(0, 70, 477, 634);
 		panelEmailUtskick.add(textArea);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(644, 40, 111, 22);
+		panelEmailUtskick.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(814, 40, 111, 22);
+		panelEmailUtskick.add(comboBox_1);
 		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
