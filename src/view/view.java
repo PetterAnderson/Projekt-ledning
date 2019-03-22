@@ -85,7 +85,7 @@ public class view {
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(view.class.getResource("/unknown.png")));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nordg\\Documents\\GitHub\\Projekt-ledning\\img\\unknown.png"));
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
