@@ -89,7 +89,7 @@ public class view {
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/unknown.png")));
+		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
@@ -200,13 +200,9 @@ public class view {
 		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblDansExpertis.setBounds(561, 554, 198, 23);
 		panelNyKund.add(lblDansExpertis);
-		JLabel lblAddResponse = new JLabel("");
-		lblAddResponse.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblAddResponse.setEnabled(false);
-		lblAddResponse.setBounds(887, 666, 93, 14);
-		panelNyKund.add(lblAddResponse);
 		
 		JButton btnLggTillKund = new JButton("L\u00E4gg till kund");
+		btnLggTillKund.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnLggTillKund.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String tmpNamn = txtNamn.getText();
@@ -217,10 +213,9 @@ public class view {
 				String tmpEmail = txtEmail.getText();
 				int tmpDans = slider.getValue();
 				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
-				lblAddResponse.setText("Kund tillagd!");
 			}
 		});
-		btnLggTillKund.setBounds(749, 662, 128, 23);
+		btnLggTillKund.setBounds(561, 632, 489, 46);
 		panelNyKund.add(btnLggTillKund);
 		
 		panelEmailUtskick = new JPanel();
