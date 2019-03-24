@@ -178,13 +178,11 @@ public class view {
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
 		
-<<<<<<< HEAD
 		JLabel lblDansExpertis = new JLabel("Dans Expertis");
 		lblDansExpertis.setForeground(Color.DARK_GRAY);
 		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblDansExpertis.setBounds(561, 554, 198, 14);
 		panelNyKund.add(lblDansExpertis);
-=======
 		JLabel lblAddResponse = new JLabel("");
 		lblAddResponse.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblAddResponse.setEnabled(false);
@@ -207,7 +205,6 @@ public class view {
 		});
 		btnLggTillKund.setBounds(749, 662, 128, 23);
 		panelNyKund.add(btnLggTillKund);
->>>>>>> 61fb3d2fd2503de8fb4cdca84ec9a5e1533a4d1d
 		
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
