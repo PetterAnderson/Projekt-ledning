@@ -1,15 +1,18 @@
 package controller;
+import modell.*;
+import javax.swing.JFrame;
 
 public class Controller {
+	private JFrame view;
+    private KundRegister kundRegister;
 
-    private KundRegister kundRegister = new KundRegister();
-
-    public Controller(KundRegister kundReg){
+    public Controller(KundRegister kundReg, JFrame view){
         this.kundRegister = kundReg;
+        this.view = view;
     }
 
-    public void addKund(String pNr, String namn, int dansExpertis, String allergi, String bostadsadress, String faktureringsadress, String telefonNummer, String email){
-        Kund tmpKund = new Kund(pNr, namn, dansExpertis, allergi, bostadsadress, faktureringsadress, telefonNummer, email);
+    public void addKund(String pNr, String namn, int dansExpertis, String bostadsadress, String faktureringsadress, String telefonNummer, String email){
+        Kund tmpKund = new Kund(pNr, namn, dansExpertis, bostadsadress, faktureringsadress, telefonNummer, email);
         kundRegister.addKund(tmpKund);
     }
 

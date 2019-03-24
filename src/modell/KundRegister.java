@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 
 public class KundRegister {
-    private String allDancers;
+    private String allDancers = "";
 
-    private ArrayList<Kund> kundLista = new ArrayList <>();
+    private ArrayList<Kund> kundLista = new ArrayList <Kund>();
 
     public void addKund(Kund nyKund){
         kundLista.add(nyKund);
@@ -29,6 +29,7 @@ public class KundRegister {
             if (kundLista.get(i).getDansExpertis() == dansExpertis){
                 allDancers += kundLista.get(i).getEmail() + "\n";
             }
-        }return allDancers;  //första emailen den returnerar när används genom controller har "null" framför, så "nulldaniel@gmail.com". idk why
+        }
+        return allDancers;
     }
 }
