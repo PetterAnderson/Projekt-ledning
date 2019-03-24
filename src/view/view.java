@@ -85,7 +85,7 @@ public class view {
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(view.class.getResource("/unknown.png")));
+		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
@@ -213,7 +213,7 @@ public class view {
 				switchPanels(panelKundRegister);
 			}
 		});
-		btnNewButton.setBounds(75, 38, 109, 23);
+		btnNewButton.setBounds(10, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
@@ -222,7 +222,7 @@ public class view {
 				switchPanels(panelEmailUtskick);
 			}
 		});
-		btnNewButton_1.setBounds(829, 38, 127, 23);
+		btnNewButton_1.setBounds(750, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
@@ -231,7 +231,7 @@ public class view {
 				switchPanels(panelNyKund);
 			}
 		});
-		btnNewButton_2.setBounds(463, 38, 89, 23);
+		btnNewButton_2.setBounds(380, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }
