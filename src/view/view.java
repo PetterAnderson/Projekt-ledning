@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class view {
 
@@ -178,13 +179,6 @@ public class view {
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
 		
-<<<<<<< HEAD
-		JLabel lblDansExpertis = new JLabel("Dans Expertis");
-		lblDansExpertis.setForeground(Color.DARK_GRAY);
-		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblDansExpertis.setBounds(561, 554, 198, 14);
-		panelNyKund.add(lblDansExpertis);
-=======
 		JLabel lblAddResponse = new JLabel("");
 		lblAddResponse.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblAddResponse.setEnabled(false);
@@ -207,7 +201,6 @@ public class view {
 		});
 		btnLggTillKund.setBounds(749, 662, 128, 23);
 		panelNyKund.add(btnLggTillKund);
->>>>>>> 61fb3d2fd2503de8fb4cdca84ec9a5e1533a4d1d
 		
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
@@ -227,6 +220,8 @@ public class view {
 		panelKundRegister.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Kundregister");
+		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/RegisterIcon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
@@ -236,6 +231,8 @@ public class view {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
+		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton_1.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/EmailIcon.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelEmailUtskick);
@@ -245,6 +242,8 @@ public class view {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
+		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelNyKund);
