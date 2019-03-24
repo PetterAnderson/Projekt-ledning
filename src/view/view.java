@@ -1,7 +1,8 @@
 package view;
 
 import java.awt.EventQueue;
-
+import controller.Controller;
+import modell.*;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
@@ -22,20 +23,19 @@ import java.awt.event.ActionEvent;
 public class view {
 
 	private JFrame frame;
-	private JTextField txtEnterNamn;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private Controller controller;
+	private KundRegister kundReg;
+	private JTextField txtEmail;
+	private JTextField txtNamn;
+	private JTextField txtTele;
+	private JTextField txtFaktureringsAdress;
+	private JTextField txtAdress;
+	private JTextField txtPnr;
 	private JLayeredPane layeredPane;
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,19 +56,13 @@ public class view {
 		layeredPane.revalidate();
 		}
 	
-
-	/**
-	 * Create the application.
-	 */
 	public view() {
 		initialize();
 	}
 	
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
+		kundReg = new KundRegister();
+		controller = new Controller(kundReg, frame);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1141, 866);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,47 +89,47 @@ public class view {
 		backgroundLabel.setBounds(10, 11, 508, 693);
 		panelNyKund.add(backgroundLabel);
 		
-		txtEnterNamn = new JTextField();
-		txtEnterNamn.setOpaque(false);
-		txtEnterNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtEnterNamn.setBounds(561, 445, 489, 72);
-		panelNyKund.add(txtEnterNamn);
-		txtEnterNamn.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setOpaque(false);
+		txtEmail.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtEmail.setBounds(561, 445, 489, 72);
+		panelNyKund.add(txtEmail);
+		txtEmail.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setOpaque(false);
-		textField_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_1.setBounds(561, 30, 489, 72);
-		panelNyKund.add(textField_1);
-		textField_1.setColumns(10);
+		txtNamn = new JTextField();
+		txtNamn.setOpaque(false);
+		txtNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtNamn.setBounds(561, 30, 489, 72);
+		panelNyKund.add(txtNamn);
+		txtNamn.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setOpaque(false);
-		textField_2.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_2.setBounds(561, 362, 489, 72);
-		panelNyKund.add(textField_2);
-		textField_2.setColumns(10);
+		txtTele = new JTextField();
+		txtTele.setOpaque(false);
+		txtTele.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtTele.setBounds(561, 362, 489, 72);
+		panelNyKund.add(txtTele);
+		txtTele.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setOpaque(false);
-		textField_3.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_3.setBounds(561, 279, 489, 72);
-		panelNyKund.add(textField_3);
-		textField_3.setColumns(10);
+		txtFaktureringsAdress = new JTextField();
+		txtFaktureringsAdress.setOpaque(false);
+		txtFaktureringsAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtFaktureringsAdress.setBounds(561, 279, 489, 72);
+		panelNyKund.add(txtFaktureringsAdress);
+		txtFaktureringsAdress.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setOpaque(false);
-		textField_4.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_4.setBounds(561, 196, 489, 72);
-		panelNyKund.add(textField_4);
-		textField_4.setColumns(10);
+		txtAdress = new JTextField();
+		txtAdress.setOpaque(false);
+		txtAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtAdress.setBounds(561, 196, 489, 72);
+		panelNyKund.add(txtAdress);
+		txtAdress.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setOpaque(false);
-		textField_5.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_5.setBounds(561, 113, 489, 72);
-		panelNyKund.add(textField_5);
-		textField_5.setColumns(10);
+		txtPnr = new JTextField();
+		txtPnr.setOpaque(false);
+		txtPnr.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtPnr.setBounds(561, 113, 489, 72);
+		panelNyKund.add(txtPnr);
+		txtPnr.setColumns(10);
 		
 		JSlider slider = new JSlider();
 		slider.setToolTipText("1 = Nyb\u00F6rjare 2 = Entusiast 3 = Proffs");
@@ -183,6 +177,29 @@ public class view {
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
+		
+		JLabel lblAddResponse = new JLabel("");
+		lblAddResponse.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblAddResponse.setEnabled(false);
+		lblAddResponse.setBounds(887, 666, 93, 14);
+		panelNyKund.add(lblAddResponse);
+		
+		JButton btnLggTillKund = new JButton("L\u00E4gg till kund");
+		btnLggTillKund.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String tmpNamn = txtNamn.getText();
+				String tmpPnr = txtPnr.getText();
+				String tmpAdress = txtAdress.getText();
+				String tmpFaktureringsAdress = txtFaktureringsAdress.getText();
+				String tmpTele = txtTele.getText();
+				String tmpEmail = txtEmail.getText();
+				int tmpDans = slider.getValue();
+				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
+				lblAddResponse.setText("Kund tillagd!");
+			}
+		});
+		btnLggTillKund.setBounds(749, 662, 128, 23);
+		panelNyKund.add(btnLggTillKund);
 		
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
