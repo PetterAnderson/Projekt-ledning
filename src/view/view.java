@@ -20,6 +20,14 @@ import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.SwingConstants;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import java.awt.Dimension;
+import java.awt.Component;
+
 
 public class view {
 
@@ -75,12 +83,13 @@ public class view {
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
 		panelNyKund = new JPanel();
+		panelNyKund.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		layeredPane.add(panelNyKund, "name_720098961090600");
 		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) null));
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
+		lblNewLabel.setIcon(new ImageIcon(this.getClass().getResource("/unknown.png")));
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
@@ -91,44 +100,50 @@ public class view {
 		panelNyKund.add(backgroundLabel);
 		
 		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtEmail.setOpaque(false);
 		txtEmail.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtEmail.setBounds(561, 445, 489, 72);
+		txtEmail.setBounds(561, 487, 489, 30);
 		panelNyKund.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtNamn = new JTextField();
+		txtNamn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtNamn.setOpaque(false);
 		txtNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtNamn.setBounds(561, 30, 489, 72);
+		txtNamn.setBounds(561, 75, 489, 30);
 		panelNyKund.add(txtNamn);
 		txtNamn.setColumns(10);
 		
 		txtTele = new JTextField();
+		txtTele.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtTele.setOpaque(false);
 		txtTele.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtTele.setBounds(561, 362, 489, 72);
+		txtTele.setBounds(561, 404, 489, 30);
 		panelNyKund.add(txtTele);
 		txtTele.setColumns(10);
 		
 		txtFaktureringsAdress = new JTextField();
+		txtFaktureringsAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtFaktureringsAdress.setOpaque(false);
 		txtFaktureringsAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtFaktureringsAdress.setBounds(561, 279, 489, 72);
+		txtFaktureringsAdress.setBounds(561, 321, 489, 30);
 		panelNyKund.add(txtFaktureringsAdress);
 		txtFaktureringsAdress.setColumns(10);
 		
 		txtAdress = new JTextField();
+		txtAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtAdress.setOpaque(false);
 		txtAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtAdress.setBounds(561, 196, 489, 72);
+		txtAdress.setBounds(561, 238, 489, 30);
 		panelNyKund.add(txtAdress);
 		txtAdress.setColumns(10);
 		
 		txtPnr = new JTextField();
+		txtPnr.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtPnr.setOpaque(false);
 		txtPnr.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtPnr.setBounds(561, 113, 489, 72);
+		txtPnr.setBounds(561, 155, 489, 30);
 		panelNyKund.add(txtPnr);
 		txtPnr.setColumns(10);
 		
@@ -146,7 +161,7 @@ public class view {
 		JLabel lblNamn = new JLabel("Namn");
 		lblNamn.setForeground(Color.DARK_GRAY);
 		lblNamn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNamn.setBounds(561, 30, 46, 14);
+		lblNamn.setBounds(561, 37, 46, 14);
 		panelNyKund.add(lblNamn);
 		
 		JLabel lblPnr = new JLabel("Personnummer");
@@ -164,7 +179,7 @@ public class view {
 		JLabel lblFaktureringsadress = new JLabel("Faktureringsadress");
 		lblFaktureringsadress.setForeground(Color.DARK_GRAY);
 		lblFaktureringsadress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblFaktureringsadress.setBounds(561, 279, 173, 14);
+		lblFaktureringsadress.setBounds(561, 279, 173, 23);
 		panelNyKund.add(lblFaktureringsadress);
 		
 		JLabel lblTelefonnummer = new JLabel("Telefonnummer");
@@ -179,6 +194,12 @@ public class view {
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
 		
+
+		JLabel lblDansExpertis = new JLabel("Dans Expertis");
+		lblDansExpertis.setForeground(Color.DARK_GRAY);
+		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDansExpertis.setBounds(561, 554, 198, 23);
+		panelNyKund.add(lblDansExpertis);
 		JLabel lblAddResponse = new JLabel("");
 		lblAddResponse.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblAddResponse.setEnabled(false);
@@ -244,6 +265,7 @@ public class view {
 		JButton btnNewButton_2 = new JButton("Ny Kund");
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
+
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelNyKund);
