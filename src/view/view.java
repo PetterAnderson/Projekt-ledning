@@ -27,6 +27,9 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import java.awt.Dimension;
 import java.awt.Component;
+import javax.swing.JFormattedTextField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class view {
@@ -44,6 +47,7 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
+	private JTextField txtDans;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -88,10 +92,10 @@ public class view {
 		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) null));
 		panelNyKund.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
-		lblNewLabel.setBounds(157, 79, 350, 560);
-		panelNyKund.add(lblNewLabel);
+		JLabel lblDancer = new JLabel("");
+		lblDancer.setIcon(new ImageIcon(this.getClass().getResource("/unknown.png")));
+		lblDancer.setBounds(157, 79, 350, 560);
+		panelNyKund.add(lblDancer);
 		
 		JLabel backgroundLabel = new JLabel("");
 		backgroundLabel.setOpaque(true);
@@ -222,9 +226,23 @@ public class view {
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("utskick");
-		lblNewLabel_1.setBounds(0, 0, 46, 14);
-		panelEmailUtskick.add(lblNewLabel_1);
+		JFormattedTextField formtxtEmail = new JFormattedTextField();
+		formtxtEmail.setBounds(10, 11, 439, 693);
+		panelEmailUtskick.add(formtxtEmail);
+		
+		JButton btnEmailUtskick = new JButton("Tryck");
+		btnEmailUtskick.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				formtxtEmail.setText(controller.sortByDansExpertis(Integer.parseInt(txtDans.getText())));
+			}
+		});
+		btnEmailUtskick.setBounds(693, 292, 186, 81);
+		panelEmailUtskick.add(btnEmailUtskick);
+		
+		txtDans = new JTextField();
+		txtDans.setBounds(693, 249, 186, 20);
+		panelEmailUtskick.add(txtDans);
+		txtDans.setColumns(10);
 		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
