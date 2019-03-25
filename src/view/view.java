@@ -25,6 +25,7 @@ import java.awt.Component;
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Cursor;
 
 public class view {
 
@@ -107,6 +108,7 @@ public class view {
 		txtEmail.setColumns(10);
 		
 		txtNamn = new JTextField();
+		txtNamn.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
 		txtNamn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtNamn.setOpaque(false);
 		txtNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
@@ -272,7 +274,7 @@ public class view {
 		
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton.setIcon(new ImageIcon(this.getClass().getResource("/RegisterIcon.png")));
+		btnNewButton.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/RegisterIcon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
@@ -283,7 +285,7 @@ public class view {
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
 		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_1.setIcon(new ImageIcon(this.getClass().getResource("/EmailIcon.png")));
+		btnNewButton_1.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/EmailIcon.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelEmailUtskick);
@@ -294,7 +296,7 @@ public class view {
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_2.setIcon(new ImageIcon(this.getClass().getResource("/NyKundIcon.png")));
+		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
 
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
