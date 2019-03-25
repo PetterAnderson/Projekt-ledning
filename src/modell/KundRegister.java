@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 
 public class KundRegister {
-    private String allDancers = "";
-
     private ArrayList<Kund> kundLista = new ArrayList <Kund>();
 
     public void addKund(Kund nyKund){
@@ -24,10 +22,11 @@ public class KundRegister {
         kundLista.remove(findKund(pNr));
     }
 
-    public String sortByDansExpertis(int dansExpertis){  //går igenom kundregistret och returnerar emailen av de som har samma dansexpertis som invalt
-        for (int i = 0; i < kundLista.size(); i++){  // kunde inte få det att fungera med en for each loop så fick bli såhär
+    public ArrayList<Kund> sortByDansExpertis(int dansExpertis){
+    	ArrayList<Kund> allDancers = new ArrayList <Kund>();
+        for (int i = 0; i < kundLista.size(); i++){
             if (kundLista.get(i).getDansExpertis() == dansExpertis){
-                allDancers += kundLista.get(i).getEmail() + "\n";
+                allDancers.add(kundLista.get(i));
             }
         }
         return allDancers;

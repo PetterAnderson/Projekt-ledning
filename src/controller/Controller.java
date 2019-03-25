@@ -1,5 +1,8 @@
 package controller;
 import modell.*;
+
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 public class Controller {
@@ -30,7 +33,7 @@ public class Controller {
         kundRegister.findKund(pNr).setEmail(newEmail);
     }
 
-    public String sortByDansExpertis(int dansExpertis){
+    public ArrayList<Kund> sortByDansExpertis(int dansExpertis){
         return kundRegister.sortByDansExpertis(dansExpertis);
     }
 

@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import javax.swing.JFormattedTextField;
@@ -47,6 +48,7 @@ public class view {
 	private JPanel panelEmailUtskick;
 	private JTable table;
 	private JTable table_1;
+	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -231,19 +233,20 @@ public class view {
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				formtxtEmail.setText(controller.sortByDansExpertis(Integer.parseInt(txtDans.getText())));
+				DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
+				tableModel.setRowCount(0);
+				ArrayList <Kund> kund = controller.sortByDansExpertis(Integer.parseInt(comboBox.getSelectedItem().toString()));
+				for(int i = 0; i < kund.size(); i++) {
+					String [] row = {kund.get(i).getNamn(),kund.get(i).getEmail()};
+					tableModel.addRow(row);
+				}
 			}
 		});
-		btnEmailUtskick.setBounds(909, 623, 186, 81);
+		btnEmailUtskick.setBounds(742, 111, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
 		
-		txtDans = new JTextField();
-		txtDans.setBounds(909, 592, 186, 20);
-		panelEmailUtskick.add(txtDans);
-		txtDans.setColumns(10);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 11, 724, 693);
+		scrollPane_1.setBounds(10, 11, 722, 693);
 		panelEmailUtskick.add(scrollPane_1);
 		
 		table_1 = new JTable();
@@ -256,6 +259,12 @@ public class view {
 		));
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
 		scrollPane_1.setViewportView(table_1);
+		
+		comboBox.setBounds(742, 14, 180, 22);
+		comboBox.addItem(1);
+		comboBox.addItem(2);
+		comboBox.addItem(3);
+		panelEmailUtskick.add(comboBox);
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(SystemColor.control);
