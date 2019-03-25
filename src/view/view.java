@@ -6,28 +6,22 @@ import modell.*;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
-import javax.swing.JButton;
+import javax.swing.JButton; 
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.SwingConstants;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import java.awt.Dimension;
 import java.awt.Component;
-
 
 public class view {
 
@@ -44,6 +38,8 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
+	private JTable table;
+	
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -90,6 +86,7 @@ public class view {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
+
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
@@ -205,6 +202,7 @@ public class view {
 		btnLggTillKund.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnLggTillKund.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 				String tmpNamn = txtNamn.getText();
 				String tmpPnr = txtPnr.getText();
 				String tmpAdress = txtAdress.getText();
@@ -212,7 +210,9 @@ public class view {
 				String tmpTele = txtTele.getText();
 				String tmpEmail = txtEmail.getText();
 				int tmpDans = slider.getValue();
+				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
 				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
+				tableModel.addRow(kundInfo);
 			}
 		});
 		btnLggTillKund.setBounds(561, 632, 489, 46);
@@ -226,14 +226,33 @@ public class view {
 		lblNewLabel_1.setBounds(0, 0, 46, 14);
 		panelEmailUtskick.add(lblNewLabel_1);
 		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(0, 70, 477, 634);
+		panelEmailUtskick.add(textArea);
+		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(new Color(204, 255, 255));
 		panelKundRegister.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("register");
-		lblNewLabel_2.setBounds(0, 0, 46, 14);
-		panelKundRegister.add(lblNewLabel_2);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 1085, 693);
+		panelKundRegister.add(scrollPane);
+		
+		table = new JTable();
+		table.setAutoCreateRowSorter(true);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Namn", "Email", "Personnummer", "Dansexpertis"
+			}
+		));
+		
+		table.getColumnModel().getColumn(0).setPreferredWidth(118);
+		table.getColumnModel().getColumn(1).setPreferredWidth(246);
+		table.getColumnModel().getColumn(2).setPreferredWidth(182);
+		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
