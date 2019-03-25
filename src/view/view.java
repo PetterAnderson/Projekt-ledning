@@ -88,7 +88,7 @@ public class view {
 		
 		panelNyKund = new JPanel();
 		layeredPane.add(panelNyKund, "name_720098961090600");
-		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(0, 153, 0)));
+		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) null));
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
