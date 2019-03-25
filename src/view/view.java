@@ -249,6 +249,14 @@ public class view {
 		panelEmailUtskick.add(scrollPane_1);
 		
 		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Namn", "Email"
+			}
+		));
+		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
 		scrollPane_1.setViewportView(table_1);
 		
 		panelKundRegister = new JPanel();
