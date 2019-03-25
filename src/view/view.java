@@ -26,6 +26,9 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class view {
 
@@ -246,11 +249,12 @@ public class view {
 		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
-		panelKundRegister.setBackground(new Color(204, 255, 255));
+		panelKundRegister.setBackground(SystemColor.control);
 		panelKundRegister.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 1085, 693);
+		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		scrollPane.setBounds(0, 27, 1105, 688);
 		panelKundRegister.add(scrollPane);
 		
 		table = new JTable();
