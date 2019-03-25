@@ -291,12 +291,6 @@ public class view {
 		
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
-		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent event) {
-				kundDetaljArea.setVisible(true);
-				kundDetaljArea.setText(Arrays.toString(controller.getKundInfo(table.getValueAt(table.getSelectedRow(), 2).toString()))) ;
-			}
-		});
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -342,9 +336,27 @@ public class view {
 		btnDelete.setBounds(0, 637, 204, 49);
 		panelKundRegister.add(btnDelete);
 		
-		JButton buttonInfo = new JButton("Ta bort markerad rad");
-		buttonInfo.setActionCommand("Mer info p\u00E5 markerad rad");
+		JButton buttonInfo = new JButton("Mer info p\u00E5 markerad rad");
+		buttonInfo.setActionCommand("");
 		buttonInfo.setBounds(214, 637, 204, 49);
+		buttonInfo.addActionListener(new ActionListener( ) {
+			public void actionPerformed(ActionEvent e) {
+			
+			int i = table.getSelectedRow();
+			
+			if (i>=0 && kundDetaljArea.isShowing()==false) {
+				kundDetaljArea.setVisible(true);
+				String [] allInfo = controller.getKundInfo(table.getValueAt(i, 2).toString());
+				String kundInfo = "Namn: " + allInfo[0] + "\nPnr: " + allInfo[1] + "\nBostadsadress: " + allInfo[2] + "\nFaktureringsadress: " + allInfo[3] + "\nEmail: " + allInfo[4] 
+				+ "\nAllergi: " + allInfo[5] + "\nTelefonnummer: " + allInfo[6] + "\nDansexpertis " + allInfo[7];
+				kundDetaljArea.setText(kundInfo);
+			}
+			else {
+				kundDetaljArea.setVisible(false);
+			}
+		
+			
+		}});
 		panelKundRegister.add(buttonInfo);
 		
 		JButton btnNewButton = new JButton("Kundregister");

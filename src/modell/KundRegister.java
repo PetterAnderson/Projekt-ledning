@@ -36,7 +36,8 @@ public class KundRegister {
     
     public String[] allaAttribut(String pNr) {
     	Kund kund = this.findKund(pNr);
-    	String [] allaAttribut = {pNr, kund.getNamn(),
+    	String [] allaAttribut = {kund.getNamn(), 
+    	pNr,
     	kund.getBostadsadress(),
     	kund.getFaktureringsadress(),
     	kund.getEmail(),
