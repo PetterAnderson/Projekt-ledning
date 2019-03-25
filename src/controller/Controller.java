@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 public class Controller {
 	private JFrame view;
     private KundRegister kundRegister;
+    private Kund kund;
 
     public Controller(KundRegister kundReg, JFrame view){
         this.kundRegister = kundReg;
@@ -36,5 +37,17 @@ public class Controller {
     public ArrayList<Kund> sortByDansExpertis(int dansExpertis){
         return kundRegister.sortByDansExpertis(dansExpertis);
     }
-
+    
+    public Kund findKund(String pNr) {
+		Kund tmp = kundRegister.findKund(pNr);
+		if(tmp != null) {
+			return tmp;
+		}
+		return null;
+	}
+    
+    public String[] getKundInfo(String pNr) {
+    	String[] kundAttribut = kundRegister.allaAttribut(pNr);
+    	return kundAttribut;
+    }
 }

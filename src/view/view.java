@@ -14,6 +14,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JSlider;
 import javax.swing.JTable;
@@ -21,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
@@ -244,6 +247,7 @@ public class view {
 					String [] row = {kund.get(i).getNamn(),kund.get(i).getEmail()};
 					tableModel.addRow(row);
 				}
+
 			}
 		});
 		
@@ -275,6 +279,11 @@ public class view {
 		panelKundRegister.setBackground(SystemColor.window);
 		panelKundRegister.setLayout(null);
 		
+		JTextArea kundDetaljArea = new JTextArea();
+		kundDetaljArea.setVisible(false);
+		kundDetaljArea.setBounds(371, 0, 364, 357);
+		panelKundRegister.add(kundDetaljArea);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setBounds(0, 27, 1105, 602);
@@ -288,8 +297,15 @@ public class view {
 			new String[] {
 				"Namn", "Email", "Personnummer", "Dansexpertis"
 			}
-		));
-		
+		) {
+			private static final long serialVersionUID = 1L;
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(118);
 		table.getColumnModel().getColumn(1).setPreferredWidth(246);
 		table.getColumnModel().getColumn(2).setPreferredWidth(182);
@@ -320,6 +336,29 @@ public class view {
 		btnDelete.setBounds(0, 637, 204, 49);
 		panelKundRegister.add(btnDelete);
 		
+		JButton buttonInfo = new JButton("Mer info p\u00E5 markerad rad");
+		buttonInfo.setActionCommand("");
+		buttonInfo.setBounds(214, 637, 204, 49);
+		buttonInfo.addActionListener(new ActionListener( ) {
+			public void actionPerformed(ActionEvent e) {
+			
+			int i = table.getSelectedRow();
+			
+			if (i>=0 && kundDetaljArea.isShowing()==false) {
+				kundDetaljArea.setVisible(true);
+				String [] allInfo = controller.getKundInfo(table.getValueAt(i, 2).toString());
+				String kundInfo = "Namn: " + allInfo[0] + "\nPnr: " + allInfo[1] + "\nBostadsadress: " + allInfo[2] + "\nFaktureringsadress: " + allInfo[3] + "\nEmail: " + allInfo[4] 
+				+ "\nAllergi: " + allInfo[5] + "\nTelefonnummer: " + allInfo[6] + "\nDansexpertis " + allInfo[7];
+				kundDetaljArea.setText(kundInfo);
+			}
+			else {
+				kundDetaljArea.setVisible(false);
+			}
+		
+			
+		}});
+		panelKundRegister.add(buttonInfo);
+		
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -327,6 +366,7 @@ public class view {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
+				kundDetaljArea.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(10, 6, 365, 96);
