@@ -206,6 +206,7 @@ public class view {
 		panelNyKund.add(lblDansExpertis);
 		
 		JButton btnLggTillKund = new JButton("L\u00E4gg till kund");
+		btnLggTillKund.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLggTillKund.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnLggTillKund.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -273,6 +274,7 @@ public class view {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Kundregister");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/RegisterIcon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -284,6 +286,7 @@ public class view {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_1.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/EmailIcon.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -295,6 +298,7 @@ public class view {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
+		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
 
