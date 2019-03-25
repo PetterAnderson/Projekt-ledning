@@ -45,8 +45,8 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
-	private JTextField txtDans;
 	private JTable table;
+	private JTable table_1;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -229,25 +229,34 @@ public class view {
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
-		
-		JFormattedTextField formtxtEmail = new JFormattedTextField();
-		formtxtEmail.setBounds(10, 11, 439, 693);
-		panelEmailUtskick.add(formtxtEmail);
-		
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				formtxtEmail.setText(controller.sortByDansExpertis(Integer.parseInt(txtDans.getText())));
 			}
 		});
-		btnEmailUtskick.setBounds(693, 292, 186, 81);
+		btnEmailUtskick.setBounds(909, 623, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
 		
 		txtDans = new JTextField();
-		txtDans.setBounds(693, 249, 186, 20);
+		txtDans.setBounds(909, 592, 186, 20);
 		panelEmailUtskick.add(txtDans);
 		txtDans.setColumns(10);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 11, 724, 693);
+		panelEmailUtskick.add(scrollPane_1);
+		
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Namn", "Email"
+			}
+		));
+		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
+		scrollPane_1.setViewportView(table_1);
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(SystemColor.control);
