@@ -210,7 +210,7 @@ public class view {
 				String tmpTele = txtTele.getText();
 				String tmpEmail = txtEmail.getText();
 				int tmpDans = slider.getValue();
-				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr};
+				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
 				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
 				tableModel.addRow(kundInfo);
 			}
