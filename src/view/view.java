@@ -234,10 +234,6 @@ public class view {
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
 		
-		JFormattedTextField formtxtEmail = new JFormattedTextField();
-		formtxtEmail.setBounds(10, 11, 439, 693);
-		panelEmailUtskick.add(formtxtEmail);
-		
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
