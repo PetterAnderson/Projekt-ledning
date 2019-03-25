@@ -1,5 +1,8 @@
 package view;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import java.awt.EventQueue;
 import controller.Controller;
 import modell.*;
@@ -23,17 +26,21 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class view {
 
@@ -75,6 +82,28 @@ public class view {
 		layeredPane.revalidate();
 		}
 	
+	File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
+	File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
+	File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
+	
+	static void playSound(File Sound)
+
+	{
+	
+		try {
+			
+			Clip clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(Sound));
+			clip.start();
+			
+			Thread.sleep(clip.getMicrosecondLength()/1000);
+			
+		}catch(Exception e)
+		{
+		
+		}
+	}
+	
 	public view() {
 		initialize();
 	}
@@ -102,6 +131,22 @@ public class view {
 		lblDancer.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
 		lblDancer.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblDancer);
+		
+		JButton btnSalsa = new JButton("La Salsa!");
+		btnSalsa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playSound(Salsa);
+			}
+		});
+		btnSalsa.setOpaque(true);
+		btnSalsa.setBackground(new Color(255, 222, 173));
+		btnSalsa.setToolTipText("Gör det inte!");
+		btnSalsa.setForeground(new Color(0, 0, 0));
+		btnSalsa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnSalsa.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/maracas.png"));
+		btnSalsa.setFont(new Font("Herculanum", Font.PLAIN, 35));
+		btnSalsa.setBounds(10, 11, 508, 73);
+		panelNyKund.add(btnSalsa);
 		
 		JLabel backgroundLabel = new JLabel("");
 		backgroundLabel.setOpaque(true);
@@ -228,6 +273,7 @@ public class view {
 				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
 				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
 				tableModel.addRow(kundInfo);
+				playSound(LaggTill);
 			}
 		});
 		btnLggTillKund.setBounds(561, 632, 489, 46);
@@ -329,7 +375,8 @@ public class view {
 					model.removeRow(i);
 				}
 				else {
-					JOptionPane.showMessageDialog(null,"Du måste välja en rad att radera");
+					playSound(Error);
+					//JOptionPane.showMessageDialog(null,"Du måste välja en rad att radera");
 				}
 			}
 		});
@@ -345,14 +392,16 @@ public class view {
 			int i = table.getSelectedRow();
 			
 			if (i>=0 && kundDetaljArea.isShowing()==false) {
-				kundDetaljArea.setVisible(true);
+//				kundDetaljArea.setVisible(true);
 				String [] allInfo = controller.getKundInfo(table.getValueAt(i, 2).toString());
 				String kundInfo = "Namn: " + allInfo[0] + "\nPnr: " + allInfo[1] + "\nBostadsadress: " + allInfo[2] + "\nFaktureringsadress: " + allInfo[3] + "\nEmail: " + allInfo[4] 
 				+ "\nAllergi: " + allInfo[5] + "\nTelefonnummer: " + allInfo[6] + "\nDansexpertis " + allInfo[7];
-				kundDetaljArea.setText(kundInfo);
+//				kundDetaljArea.setText(kundInfo);
+				JOptionPane.showMessageDialog(null, kundInfo, table.getValueAt(i, 0).toString(), JOptionPane.INFORMATION_MESSAGE);
 			}
 			else {
-				kundDetaljArea.setVisible(false);
+				//kundDetaljArea.setVisible(false);
+				playSound(Error);
 			}
 		
 			
