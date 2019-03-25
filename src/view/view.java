@@ -89,7 +89,7 @@ public class view {
 		panelNyKund.setLayout(null);
 		
 		JLabel lblDancer = new JLabel("");
-		lblDancer.setIcon(new ImageIcon(this.getClass().getResource("/unknown.png")));
+		lblDancer.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
 		lblDancer.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblDancer);
 		
