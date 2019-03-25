@@ -244,10 +244,6 @@ public class view {
 		panelEmailUtskick.add(txtDans);
 		txtDans.setColumns(10);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(0, 70, 477, 634);
-		panelEmailUtskick.add(textArea);
-		
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(new Color(204, 255, 255));
