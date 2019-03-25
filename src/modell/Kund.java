@@ -1,5 +1,4 @@
 package modell;
-
 import java.util.ArrayList;
 
 public class Kund {
@@ -11,30 +10,42 @@ public class Kund {
     private String faktureringsadress;
     private String telefonNummer;
     private String email;
-    
+
     private ArrayList <Recension> recensionList = new ArrayList <Recension>();
 
+    // Detta lades in!
+    public Kund (String pNr, String namn, int dansExpertis, String bostadsadress, String faktureringsadress, String telefonNummer, String email){
+        this.setpNr(pNr);
+        this.setNamn(namn);
+        this.setDansExpertis(dansExpertis);
+       // this.setAllergi(allergi);
+        this.setBostadsadress(bostadsadress);
+        this.setFaktureringsadress(faktureringsadress);
+        this.setTelefonNummer(telefonNummer);
+        this.setEmail(email);
+    }
+    
     public ArrayList<Recension> getRecensionList() {
-		return recensionList;
-	}
-	public void setRecensionList(ArrayList<Recension> recensionList) {
-		this.recensionList = recensionList;
-	}
-	
-	public void addRecension(Recension r) {
-		this.recensionList.add(r);
-	}
-	
-	public Recension findRecension(String reseId) {
-		for(Recension tmp : recensionList) {
-			if(tmp.getResa().getReseId().equals(reseId)) {
-				return tmp;
-			}
-		}
-		return null;
-	}
-	
-	//getters
+        return recensionList;
+    }
+    public void setRecensionList(ArrayList<Recension> recensionList) {
+        this.recensionList = recensionList;
+    }
+
+    public void addRecension(Recension r) {
+        this.recensionList.add(r);
+    }
+
+    public Recension findRecension(String reseId) {
+        for(Recension tmp : recensionList) {
+            if(tmp.getResa().getReseId().equals(reseId)) {
+                return tmp;
+            }
+        }
+        return null;
+    }
+
+    //getters
     public String getNamn(){
         return namn;
     }

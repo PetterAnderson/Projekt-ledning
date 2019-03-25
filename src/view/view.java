@@ -1,48 +1,55 @@
 package view;
 
 import java.awt.EventQueue;
-
+import controller.Controller;
+import modell.*;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JSlider;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JList;
-import javax.swing.JTextArea;
-import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import java.awt.Dimension;
+import java.awt.Component;
 
 public class view {
 
 	private JFrame frame;
-	private JTextField txtEnterNamn;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private Controller controller;
+	private KundRegister kundReg;
+	private JTextField txtEmail;
+	private JTextField txtNamn;
+	private JTextField txtTele;
+	private JTextField txtFaktureringsAdress;
+	private JTextField txtAdress;
+	private JTextField txtPnr;
 	private JLayeredPane layeredPane;
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,19 +70,13 @@ public class view {
 		layeredPane.revalidate();
 		}
 	
-
-	/**
-	 * Create the application.
-	 */
 	public view() {
 		initialize();
 	}
 	
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
+		kundReg = new KundRegister();
+		controller = new Controller(kundReg, frame);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1141, 866);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,12 +88,14 @@ public class view {
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
 		panelNyKund = new JPanel();
+		panelNyKund.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		layeredPane.add(panelNyKund, "name_720098961090600");
 		panelNyKund.setBorder(new MatteBorder(0, 0, 2, 0, (Color) null));
 		panelNyKund.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\nordg\\Documents\\GitHub\\Projekt-ledning\\img\\unknown.png"));
+		lblNewLabel.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
+
 		lblNewLabel.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblNewLabel);
 		
@@ -102,47 +105,53 @@ public class view {
 		backgroundLabel.setBounds(10, 11, 508, 693);
 		panelNyKund.add(backgroundLabel);
 		
-		txtEnterNamn = new JTextField();
-		txtEnterNamn.setOpaque(false);
-		txtEnterNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtEnterNamn.setBounds(561, 445, 489, 72);
-		panelNyKund.add(txtEnterNamn);
-		txtEnterNamn.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtEmail.setOpaque(false);
+		txtEmail.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtEmail.setBounds(561, 487, 489, 30);
+		panelNyKund.add(txtEmail);
+		txtEmail.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setOpaque(false);
-		textField_1.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_1.setBounds(561, 30, 489, 72);
-		panelNyKund.add(textField_1);
-		textField_1.setColumns(10);
+		txtNamn = new JTextField();
+		txtNamn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtNamn.setOpaque(false);
+		txtNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtNamn.setBounds(561, 75, 489, 30);
+		panelNyKund.add(txtNamn);
+		txtNamn.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setOpaque(false);
-		textField_2.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_2.setBounds(561, 362, 489, 72);
-		panelNyKund.add(textField_2);
-		textField_2.setColumns(10);
+		txtTele = new JTextField();
+		txtTele.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtTele.setOpaque(false);
+		txtTele.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtTele.setBounds(561, 404, 489, 30);
+		panelNyKund.add(txtTele);
+		txtTele.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setOpaque(false);
-		textField_3.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_3.setBounds(561, 279, 489, 72);
-		panelNyKund.add(textField_3);
-		textField_3.setColumns(10);
+		txtFaktureringsAdress = new JTextField();
+		txtFaktureringsAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtFaktureringsAdress.setOpaque(false);
+		txtFaktureringsAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtFaktureringsAdress.setBounds(561, 321, 489, 30);
+		panelNyKund.add(txtFaktureringsAdress);
+		txtFaktureringsAdress.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setOpaque(false);
-		textField_4.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_4.setBounds(561, 196, 489, 72);
-		panelNyKund.add(textField_4);
-		textField_4.setColumns(10);
+		txtAdress = new JTextField();
+		txtAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtAdress.setOpaque(false);
+		txtAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtAdress.setBounds(561, 238, 489, 30);
+		panelNyKund.add(txtAdress);
+		txtAdress.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setOpaque(false);
-		textField_5.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		textField_5.setBounds(561, 113, 489, 72);
-		panelNyKund.add(textField_5);
-		textField_5.setColumns(10);
+		txtPnr = new JTextField();
+		txtPnr.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtPnr.setOpaque(false);
+		txtPnr.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtPnr.setBounds(561, 155, 489, 30);
+		panelNyKund.add(txtPnr);
+		txtPnr.setColumns(10);
 		
 		JSlider slider = new JSlider();
 		slider.setToolTipText("1 = Nyb\u00F6rjare 2 = Entusiast 3 = Proffs");
@@ -158,7 +167,7 @@ public class view {
 		JLabel lblNamn = new JLabel("Namn");
 		lblNamn.setForeground(Color.DARK_GRAY);
 		lblNamn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNamn.setBounds(561, 30, 46, 14);
+		lblNamn.setBounds(561, 37, 46, 14);
 		panelNyKund.add(lblNamn);
 		
 		JLabel lblPnr = new JLabel("Personnummer");
@@ -176,7 +185,7 @@ public class view {
 		JLabel lblFaktureringsadress = new JLabel("Faktureringsadress");
 		lblFaktureringsadress.setForeground(Color.DARK_GRAY);
 		lblFaktureringsadress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblFaktureringsadress.setBounds(561, 279, 173, 14);
+		lblFaktureringsadress.setBounds(561, 279, 173, 23);
 		panelNyKund.add(lblFaktureringsadress);
 		
 		JLabel lblTelefonnummer = new JLabel("Telefonnummer");
@@ -190,6 +199,30 @@ public class view {
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblEmail.setBounds(561, 445, 93, 14);
 		panelNyKund.add(lblEmail);
+		
+
+		JLabel lblDansExpertis = new JLabel("Dans Expertis");
+		lblDansExpertis.setForeground(Color.DARK_GRAY);
+		lblDansExpertis.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDansExpertis.setBounds(561, 554, 198, 23);
+		panelNyKund.add(lblDansExpertis);
+		
+		JButton btnLggTillKund = new JButton("L\u00E4gg till kund");
+		btnLggTillKund.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnLggTillKund.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String tmpNamn = txtNamn.getText();
+				String tmpPnr = txtPnr.getText();
+				String tmpAdress = txtAdress.getText();
+				String tmpFaktureringsAdress = txtFaktureringsAdress.getText();
+				String tmpTele = txtTele.getText();
+				String tmpEmail = txtEmail.getText();
+				int tmpDans = slider.getValue();
+				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
+			}
+		});
+		btnLggTillKund.setBounds(561, 632, 489, 46);
+		panelNyKund.add(btnLggTillKund);
 		
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
@@ -235,30 +268,37 @@ public class view {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Kundregister");
+		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton.setIcon(new ImageIcon(this.getClass().getResource("/RegisterIcon.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
 			}
 		});
-		btnNewButton.setBounds(75, 38, 109, 23);
+		btnNewButton.setBounds(10, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
+		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton_1.setIcon(new ImageIcon(this.getClass().getResource("/EmailIcon.png")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelEmailUtskick);
 			}
 		});
-		btnNewButton_1.setBounds(829, 38, 127, 23);
+		btnNewButton_1.setBounds(750, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
+		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton_2.setIcon(new ImageIcon(this.getClass().getResource("/NyKundIcon.png")));
+
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelNyKund);
 			}
 		});
-		btnNewButton_2.setBounds(463, 38, 89, 23);
+		btnNewButton_2.setBounds(380, 6, 365, 96);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }

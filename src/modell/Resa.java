@@ -28,7 +28,7 @@ public class Resa {
 	
 	public void addRecension(Recension r) {
 		this.recensionList.add(r);
-	}
+}
 	
 	public Recension findRecension(String pNr) {
 		for(Recension tmp : recensionList) {
@@ -37,7 +37,7 @@ public class Resa {
 			}
 		}
 		return null;
-	}
+}
 	
 	public String getReseId() {
 		return reseId;
@@ -62,8 +62,5 @@ public class Resa {
 	}
 	public void setHemDatum(String hemDatum) {
 		this.hemDatum = hemDatum;
-	}
-	
-	
-	
+	}	
 }
