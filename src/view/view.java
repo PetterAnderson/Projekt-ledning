@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JButton; 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -45,8 +46,8 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
+	private JTextField txtDans;
 	private JTable table;
-	private JTable table_1;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -229,42 +230,33 @@ public class view {
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
+		
+		JFormattedTextField formtxtEmail = new JFormattedTextField();
+		formtxtEmail.setBounds(10, 11, 439, 693);
+		panelEmailUtskick.add(formtxtEmail);
+		
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				formtxtEmail.setText(controller.sortByDansExpertis(Integer.parseInt(txtDans.getText())));
 			}
 		});
-		btnEmailUtskick.setBounds(909, 623, 186, 81);
+		btnEmailUtskick.setBounds(693, 292, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
 		
 		txtDans = new JTextField();
-		txtDans.setBounds(909, 592, 186, 20);
+		txtDans.setBounds(693, 249, 186, 20);
 		panelEmailUtskick.add(txtDans);
 		txtDans.setColumns(10);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 11, 724, 693);
-		panelEmailUtskick.add(scrollPane_1);
-		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Namn", "Email"
-			}
-		));
-		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
-		scrollPane_1.setViewportView(table_1);
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
-		panelKundRegister.setBackground(SystemColor.control);
+		panelKundRegister.setBackground(SystemColor.window);
 		panelKundRegister.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane.setBounds(0, 27, 1105, 688);
+		scrollPane.setBounds(0, 27, 1105, 602);
 		panelKundRegister.add(scrollPane);
 		
 		table = new JTable();
@@ -281,6 +273,31 @@ public class view {
 		table.getColumnModel().getColumn(1).setPreferredWidth(246);
 		table.getColumnModel().getColumn(2).setPreferredWidth(182);
 		scrollPane.setViewportView(table);
+		
+		JButton btnDelete = new JButton("Ta bort markerad rad");
+		btnDelete.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/delete.png"));
+		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				
+				int i = table.getSelectedRow();
+				
+				if (i>=0) {
+					
+					String pnbr = (String) model.getValueAt(i, 2);
+					controller.removeKund(pnbr);
+					JOptionPane.showMessageDialog(null,model.getValueAt(i, 0) + " är nu borttagen ut systemet.");
+					model.removeRow(i);
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Du måste välja en rad att radera");
+				}
+			}
+		});
+		btnDelete.setBounds(0, 637, 204, 49);
+		panelKundRegister.add(btnDelete);
 		
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
