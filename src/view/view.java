@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JButton; 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import javax.swing.JFormattedTextField;
@@ -48,8 +50,10 @@ public class view {
 	private JPanel panelNyKund;
 	private JPanel panelKundRegister;
 	private JPanel panelEmailUtskick;
+	private JTextField txtDans;
 	private JTable table;
 	private JTable table_1;
+	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -209,6 +213,7 @@ public class view {
 		panelNyKund.add(lblDansExpertis);
 		
 		JButton btnLggTillKund = new JButton("L\u00E4gg till kund");
+		btnLggTillKund.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLggTillKund.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnLggTillKund.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -231,21 +236,26 @@ public class view {
 		panelEmailUtskick = new JPanel();
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
+		
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
+				tableModel.setRowCount(0);
+				ArrayList <Kund> kund = controller.sortByDansExpertis(Integer.parseInt(comboBox.getSelectedItem().toString()));
+				for(int i = 0; i < kund.size(); i++) {
+					String [] row = {kund.get(i).getNamn(),kund.get(i).getEmail()};
+					tableModel.addRow(row);
+				}
+
 			}
 		});
-		btnEmailUtskick.setBounds(909, 623, 186, 81);
+		
+		btnEmailUtskick.setBounds(742, 111, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
 		
-		txtDans = new JTextField();
-		txtDans.setBounds(909, 592, 186, 20);
-		panelEmailUtskick.add(txtDans);
-		txtDans.setColumns(10);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 11, 724, 693);
+		scrollPane_1.setBounds(10, 11, 722, 693);
 		panelEmailUtskick.add(scrollPane_1);
 		
 		table_1 = new JTable();
@@ -258,9 +268,15 @@ public class view {
 		));
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
 		scrollPane_1.setViewportView(table_1);
+		
+		comboBox.setBounds(742, 14, 180, 22);
+		comboBox.addItem(1);
+		comboBox.addItem(2);
+		comboBox.addItem(3);
+		panelEmailUtskick.add(comboBox);
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
-		panelKundRegister.setBackground(SystemColor.control);
+		panelKundRegister.setBackground(SystemColor.window);
 		panelKundRegister.setLayout(null);
 		
 		JTextArea kundDetaljArea = new JTextArea();
@@ -270,7 +286,7 @@ public class view {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane.setBounds(0, 27, 1105, 688);
+		scrollPane.setBounds(0, 27, 1105, 602);
 		panelKundRegister.add(scrollPane);
 		
 		table = new JTable();
@@ -301,7 +317,38 @@ public class view {
 		table.getColumnModel().getColumn(2).setPreferredWidth(182);
 		scrollPane.setViewportView(table);
 		
+		JButton btnDelete = new JButton("Ta bort markerad rad");
+		btnDelete.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/delete.png"));
+		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				
+				int i = table.getSelectedRow();
+				
+				if (i>=0) {
+					
+					String pnbr = (String) model.getValueAt(i, 2);
+					controller.removeKund(pnbr);
+					JOptionPane.showMessageDialog(null,model.getValueAt(i, 0) + " är nu borttagen ut systemet.");
+					model.removeRow(i);
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Du måste välja en rad att radera");
+				}
+			}
+		});
+		btnDelete.setBounds(0, 637, 204, 49);
+		panelKundRegister.add(btnDelete);
+		
+		JButton buttonInfo = new JButton("Ta bort markerad rad");
+		buttonInfo.setActionCommand("Mer info p\u00E5 markerad rad");
+		buttonInfo.setBounds(214, 637, 204, 49);
+		panelKundRegister.add(buttonInfo);
+		
 		JButton btnNewButton = new JButton("Kundregister");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/RegisterIcon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -314,6 +361,7 @@ public class view {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Email-utskick");
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_1.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/EmailIcon.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -325,6 +373,7 @@ public class view {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ny Kund");
+		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
 
