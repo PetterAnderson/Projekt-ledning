@@ -10,7 +10,6 @@ public class Kund {
     private String faktureringsadress;
     private String telefonNummer;
     private String email;
-
     private ArrayList <Recension> recensionList = new ArrayList <Recension>();
 
     // Detta lades in!
@@ -74,6 +73,7 @@ public class Kund {
     //setters
     public void setNamn(String namn){
         this.namn = namn;
+        
     }
     public void setpNr(String pNr){
         this.pNr = pNr;
@@ -96,5 +96,8 @@ public class Kund {
     public void setEmail(String email){
         this.email = email;
     }
-
+    
+    public void getAllAttributes() {
+    	
+    }
 }

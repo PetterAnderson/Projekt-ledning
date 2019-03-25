@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class KundRegister {
     private String allDancers = "";
-
     private ArrayList<Kund> kundLista = new ArrayList <Kund>();
 
     public void addKund(Kund nyKund){
@@ -32,4 +31,18 @@ public class KundRegister {
         }
         return allDancers;
     }
+    
+    public String[] allaAttribut(String pNr) {
+    	Kund kund = this.findKund(pNr);
+    	String [] allaAttribut = {pNr, kund.getNamn(),
+    	kund.getBostadsadress(),
+    	kund.getFaktureringsadress(),
+    	kund.getEmail(),
+    	kund.getAllergi(),
+    	kund.getTelefonNummer(),
+    	Integer.toString(kund.getDansExpertis())
+    	};
+    	return allaAttribut;
+    }
+    
 }

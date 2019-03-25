@@ -13,6 +13,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JSlider;
 import javax.swing.JTable;
@@ -20,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
 import javax.swing.JFormattedTextField;
@@ -233,7 +236,6 @@ public class view {
 		JButton btnEmailUtskick = new JButton("Tryck");
 		btnEmailUtskick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				formtxtEmail.setText(controller.sortByDansExpertis(Integer.parseInt(txtDans.getText())));
 			}
 		});
 		btnEmailUtskick.setBounds(909, 623, 186, 81);
@@ -264,6 +266,11 @@ public class view {
 		panelKundRegister.setBackground(SystemColor.control);
 		panelKundRegister.setLayout(null);
 		
+		JTextArea kundDetaljArea = new JTextArea();
+		kundDetaljArea.setVisible(false);
+		kundDetaljArea.setBounds(371, 0, 364, 357);
+		panelKundRegister.add(kundDetaljArea);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setBounds(0, 27, 1105, 688);
@@ -271,14 +278,27 @@ public class view {
 		
 		table = new JTable();
 		table.setAutoCreateRowSorter(true);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent event) {
+				kundDetaljArea.setVisible(true);
+				kundDetaljArea.setText(Arrays.toString(controller.getKundInfo(table.getValueAt(table.getSelectedRow(), 2).toString()))) ;
+			}
+		});
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"Namn", "Email", "Personnummer", "Dansexpertis"
 			}
-		));
-		
+		) {
+			private static final long serialVersionUID = 1L;
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(118);
 		table.getColumnModel().getColumn(1).setPreferredWidth(246);
 		table.getColumnModel().getColumn(2).setPreferredWidth(182);
@@ -290,6 +310,7 @@ public class view {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
+				kundDetaljArea.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(10, 6, 365, 96);
