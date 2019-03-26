@@ -61,6 +61,11 @@ public class view {
 	private JTable table;
 	private JTable table_1;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
+	
+	//Sound
+	private File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
+	private File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
+	private File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -82,11 +87,7 @@ public class view {
 		layeredPane.revalidate();
 		}
 	
-	File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
-	File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
-	File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
-	
-	static void playSound(File Sound)
+	public static void playSound(File Sound)
 
 	{
 	
@@ -325,10 +326,10 @@ public class view {
 		panelKundRegister.setBackground(SystemColor.window);
 		panelKundRegister.setLayout(null);
 		
-		JTextArea kundDetaljArea = new JTextArea();
-		kundDetaljArea.setVisible(false);
-		kundDetaljArea.setBounds(371, 0, 364, 357);
-		panelKundRegister.add(kundDetaljArea);
+//		JTextArea kundDetaljArea = new JTextArea();
+//		kundDetaljArea.setVisible(false);
+//		kundDetaljArea.setBounds(371, 0, 364, 357);
+//		panelKundRegister.add(kundDetaljArea);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -391,7 +392,7 @@ public class view {
 			
 			int i = table.getSelectedRow();
 			
-			if (i>=0 && kundDetaljArea.isShowing()==false) {
+			if (i>=0 ) {
 //				kundDetaljArea.setVisible(true);
 				String [] allInfo = controller.getKundInfo(table.getValueAt(i, 2).toString());
 				String kundInfo = "Namn: " + allInfo[0] + "\nPnr: " + allInfo[1] + "\nBostadsadress: " + allInfo[2] + "\nFaktureringsadress: " + allInfo[3] + "\nEmail: " + allInfo[4] 
@@ -415,7 +416,7 @@ public class view {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
-				kundDetaljArea.setVisible(false);
+//				kundDetaljArea.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(10, 6, 365, 96);
