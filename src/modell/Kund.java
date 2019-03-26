@@ -13,11 +13,11 @@ public class Kund {
     private ArrayList <Recension> recensionList = new ArrayList <Recension>();
 
     // Detta lades in!
-    public Kund (String pNr, String namn, int dansExpertis, String bostadsadress, String faktureringsadress, String telefonNummer, String email){
+    public Kund (String pNr, String namn, int dansExpertis, String allergi, String bostadsadress, String faktureringsadress, String telefonNummer, String email){
         this.setpNr(pNr);
         this.setNamn(namn);
         this.setDansExpertis(dansExpertis);
-       // this.setAllergi(allergi);
+       this.setAllergi(allergi);
         this.setBostadsadress(bostadsadress);
         this.setFaktureringsadress(faktureringsadress);
         this.setTelefonNummer(telefonNummer);
