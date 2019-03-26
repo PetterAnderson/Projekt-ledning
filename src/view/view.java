@@ -224,7 +224,7 @@ public class view {
 		JLabel lblPnr = new JLabel("Personnummer");
 		lblPnr.setForeground(Color.DARK_GRAY);
 		lblPnr.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPnr.setBounds(561, 97, 121, 30);
+		lblPnr.setBounds(561, 97, 121, 23);
 		panelNyKund.add(lblPnr);
 		
 		JLabel lblAdress = new JLabel("Adress");
