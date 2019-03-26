@@ -20,6 +20,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
 import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -40,6 +41,10 @@ import java.awt.Cursor;
 import javax.swing.border.LineBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 import javax.swing.SwingConstants;
 
 public class view {
@@ -60,6 +65,7 @@ public class view {
 	private JTextField txtDans;
 	private JTable table;
 	private JTable table_1;
+	private JLabel clipBoardLabel;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 
 	public static void main(String[] args) {
@@ -296,6 +302,7 @@ public class view {
 		panelNyKund.add(lblAllergi);
 		
 		panelEmailUtskick = new JPanel();
+		panelEmailUtskick.setVisible(false);
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
 		
@@ -304,14 +311,27 @@ public class view {
 			public void actionPerformed(ActionEvent arg0) {
 				DefaultTableModel tableModel = (DefaultTableModel) table_1.getModel();
 				tableModel.setRowCount(0);
+				String emailClip = "";
 				ArrayList <Kund> kund = controller.sortByDansExpertis(Integer.parseInt(comboBox.getSelectedItem().toString()));
 				for(int i = 0; i < kund.size(); i++) {
 					String [] row = {kund.get(i).getNamn(),kund.get(i).getEmail()};
 					tableModel.addRow(row);
+					emailClip +=  tableModel.getValueAt(i, 1) + " ";
 				}
-
+				
+				StringSelection stringSelection = new StringSelection (emailClip);
+				Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
+				clpbrd.setContents (stringSelection, null);
+				
+				clipBoardLabel.setVisible(true);
+				
 			}
 		});
+		
+		clipBoardLabel = new JLabel("Emails copied to clipboard!");
+		clipBoardLabel.setBounds(0, 0, 1105, 715);
+		panelEmailUtskick.add(clipBoardLabel);
+		clipBoardLabel.setVisible(false);
 		
 		btnEmailUtskick.setBounds(742, 111, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
