@@ -68,6 +68,7 @@ public class view {
 	private JLabel clipBoardLabel;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 	private JTextField txtAllergi;
+	private JLabel errorLabel;
 	
 	//Sound
 	private File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
@@ -283,10 +284,19 @@ public class view {
 				String tmpAllergi = txtAllergi.getText();
 				int tmpDans = slider.getValue();
 				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
-				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAllergi, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
-				tableModel.addRow(kundInfo);
+				
+				if(!tmpPnr.isEmpty()) {
+					controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAllergi, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
+					tableModel.addRow(kundInfo);
+					errorLabel.setVisible(false);
+				}
+				else {
+					errorLabel.setVisible(true);
+				}
+				
 				playSound(LaggTill);
 			}
+		
 		});
 		btnLggTillKund.setBounds(561, 632, 489, 46);
 		panelNyKund.add(btnLggTillKund);
@@ -304,6 +314,13 @@ public class view {
 		lblAllergi.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblAllergi.setBounds(561, 479, 78, 23);
 		panelNyKund.add(lblAllergi);
+		
+		errorLabel = new JLabel("Du gl\u00F6mde sl\u00E5 in ett personnummer!");
+		errorLabel.setVisible(false);
+		errorLabel.setForeground(Color.DARK_GRAY);
+		errorLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		errorLabel.setBounds(648, 681, 281, 23);
+		panelNyKund.add(errorLabel);
 		
 		panelEmailUtskick = new JPanel();
 		panelEmailUtskick.setVisible(false);
