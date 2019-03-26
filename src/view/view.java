@@ -70,9 +70,9 @@ public class view {
 	private JTextField txtAllergi;
 	
 	//Sound
-	private File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
-	private File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
-	private File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
+	private File Error = new File("sounds/Error.wav");
+	private File Salsa = new File("sounds/Salsa.wav");
+	private File LaggTill = new File("sounds/LaggTill.wav");
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -139,7 +139,7 @@ public class view {
 		panelNyKund.setLayout(null);
 		
 		JLabel lblDancer = new JLabel("");
-		lblDancer.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/unknown.png"));
+		lblDancer.setIcon(new ImageIcon("img/unknown.png"));
 		lblDancer.setBounds(157, 79, 350, 560);
 		panelNyKund.add(lblDancer);
 		
@@ -154,7 +154,7 @@ public class view {
 		btnSalsa.setToolTipText("Gör det inte!");
 		btnSalsa.setForeground(new Color(0, 0, 0));
 		btnSalsa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnSalsa.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/maracas.png"));
+		btnSalsa.setIcon(new ImageIcon("img/maracas.png"));
 		btnSalsa.setFont(new Font("Herculanum", Font.PLAIN, 35));
 		btnSalsa.setBounds(10, 11, 508, 73);
 		panelNyKund.add(btnSalsa);
@@ -404,7 +404,7 @@ public class view {
 		scrollPane.setViewportView(table);
 		
 		JButton btnDelete = new JButton("Ta bort markerad rad");
-		btnDelete.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/delete.png"));
+		btnDelete.setIcon(new ImageIcon("img/delete.png"));
 		btnDelete.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -457,7 +457,7 @@ public class view {
 		JButton btnNewButton = new JButton("Kundregister");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/RegisterIcon.png"));
+		btnNewButton.setIcon(new ImageIcon("img/RegisterIcon.png"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
@@ -470,7 +470,7 @@ public class view {
 		JButton btnNewButton_1 = new JButton("Email-utskick");
 		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_1.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/EmailIcon.png"));
+		btnNewButton_1.setIcon(new ImageIcon("img/EmailIcon.png"));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelEmailUtskick);
@@ -482,7 +482,7 @@ public class view {
 		JButton btnNewButton_2 = new JButton("Ny Kund");
 		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_2.setIcon(new ImageIcon("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/img/NyKundIcon.png"));
+		btnNewButton_2.setIcon(new ImageIcon("img/NyKundIcon.png"));
 
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
