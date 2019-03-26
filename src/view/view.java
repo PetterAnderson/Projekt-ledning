@@ -65,6 +65,7 @@ public class view {
 	private JTextField txtDans;
 	private JTable table;
 	private JTable table_1;
+	private JLabel clipBoardLabel;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
 
 	public static void main(String[] args) {
@@ -285,6 +286,7 @@ public class view {
 		panelNyKund.add(btnLggTillKund);
 		
 		panelEmailUtskick = new JPanel();
+		panelEmailUtskick.setVisible(false);
 		layeredPane.add(panelEmailUtskick, "name_720098969497700");
 		panelEmailUtskick.setLayout(null);
 		
@@ -305,8 +307,15 @@ public class view {
 				Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
 				clpbrd.setContents (stringSelection, null);
 				
+				clipBoardLabel.setVisible(true);
+				
 			}
 		});
+		
+		clipBoardLabel = new JLabel("Emails copied to clipboard!");
+		clipBoardLabel.setBounds(0, 0, 1105, 715);
+		panelEmailUtskick.add(clipBoardLabel);
+		clipBoardLabel.setVisible(false);
 		
 		btnEmailUtskick.setBounds(742, 111, 186, 81);
 		panelEmailUtskick.add(btnEmailUtskick);
