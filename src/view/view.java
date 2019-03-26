@@ -334,7 +334,7 @@ public class view {
 		});
 		
 		clipBoardLabel = new JLabel("Emails copied to clipboard!");
-		clipBoardLabel.setBounds(0, 0, 1105, 715);
+		clipBoardLabel.setBounds(742, 222, 229, 87);
 		panelEmailUtskick.add(clipBoardLabel);
 		clipBoardLabel.setVisible(false);
 		
