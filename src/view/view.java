@@ -303,12 +303,13 @@ public class view {
 					emailClip +=  tableModel.getValueAt(i, 1) + " ";
 				}
 				
+				if(kund.size() != 0) {
 				StringSelection stringSelection = new StringSelection (emailClip);
 				Clipboard clpbrd = Toolkit.getDefaultToolkit ().getSystemClipboard ();
 				clpbrd.setContents (stringSelection, null);
-				
+		
 				clipBoardLabel.setVisible(true);
-				
+				}
 			}
 		});
 		
