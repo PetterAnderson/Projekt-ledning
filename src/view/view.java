@@ -67,6 +67,12 @@ public class view {
 	private JTable table_1;
 	private JLabel clipBoardLabel;
 	private JComboBox<Integer> comboBox = new JComboBox<Integer>();
+	private JTextField txtAllergi;
+	
+	//Sound
+	private File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
+	private File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
+	private File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -88,9 +94,8 @@ public class view {
 		layeredPane.revalidate();
 		}
 	
-	File Error = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Error.wav");
-	File Salsa = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/Salsa.wav");
-	File LaggTill = new File("/Users/admin/eclipse-workspace/Projekt-ledning/Projekt-ledning/sounds/LaggTill.wav");
+
+	
 	
 	static void playSound(File Sound)
 
@@ -164,7 +169,7 @@ public class view {
 		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtEmail.setOpaque(false);
 		txtEmail.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtEmail.setBounds(561, 487, 489, 30);
+		txtEmail.setBounds(561, 438, 489, 30);
 		panelNyKund.add(txtEmail);
 		txtEmail.setColumns(10);
 		
@@ -173,7 +178,7 @@ public class view {
 		txtNamn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtNamn.setOpaque(false);
 		txtNamn.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtNamn.setBounds(561, 75, 489, 30);
+		txtNamn.setBounds(561, 54, 489, 30);
 		panelNyKund.add(txtNamn);
 		txtNamn.setColumns(10);
 		
@@ -181,7 +186,7 @@ public class view {
 		txtTele.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtTele.setOpaque(false);
 		txtTele.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtTele.setBounds(561, 404, 489, 30);
+		txtTele.setBounds(561, 363, 489, 30);
 		panelNyKund.add(txtTele);
 		txtTele.setColumns(10);
 		
@@ -189,7 +194,7 @@ public class view {
 		txtFaktureringsAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtFaktureringsAdress.setOpaque(false);
 		txtFaktureringsAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtFaktureringsAdress.setBounds(561, 321, 489, 30);
+		txtFaktureringsAdress.setBounds(561, 288, 489, 30);
 		panelNyKund.add(txtFaktureringsAdress);
 		txtFaktureringsAdress.setColumns(10);
 		
@@ -197,7 +202,7 @@ public class view {
 		txtAdress.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtAdress.setOpaque(false);
 		txtAdress.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtAdress.setBounds(561, 238, 489, 30);
+		txtAdress.setBounds(561, 213, 489, 30);
 		panelNyKund.add(txtAdress);
 		txtAdress.setColumns(10);
 		
@@ -205,7 +210,7 @@ public class view {
 		txtPnr.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtPnr.setOpaque(false);
 		txtPnr.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
-		txtPnr.setBounds(561, 155, 489, 30);
+		txtPnr.setBounds(561, 138, 489, 30);
 		panelNyKund.add(txtPnr);
 		txtPnr.setColumns(10);
 		
@@ -217,43 +222,43 @@ public class view {
 		slider.setMaximum(3);
 		slider.setSnapToTicks(true);
 		slider.setPaintTicks(true);
-		slider.setBounds(561, 580, 489, 40);
+		slider.setBounds(561, 581, 489, 40);
 		panelNyKund.add(slider);
 		
 		JLabel lblNamn = new JLabel("Namn");
 		lblNamn.setForeground(Color.DARK_GRAY);
 		lblNamn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNamn.setBounds(561, 37, 46, 14);
+		lblNamn.setBounds(561, 20, 54, 23);
 		panelNyKund.add(lblNamn);
 		
 		JLabel lblPnr = new JLabel("Personnummer");
 		lblPnr.setForeground(Color.DARK_GRAY);
 		lblPnr.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPnr.setBounds(561, 113, 121, 14);
+		lblPnr.setBounds(561, 97, 121, 23);
 		panelNyKund.add(lblPnr);
 		
 		JLabel lblAdress = new JLabel("Adress");
 		lblAdress.setForeground(Color.DARK_GRAY);
 		lblAdress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblAdress.setBounds(561, 196, 93, 14);
+		lblAdress.setBounds(561, 179, 93, 23);
 		panelNyKund.add(lblAdress);
 		
 		JLabel lblFaktureringsadress = new JLabel("Faktureringsadress");
 		lblFaktureringsadress.setForeground(Color.DARK_GRAY);
 		lblFaktureringsadress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblFaktureringsadress.setBounds(561, 279, 173, 23);
+		lblFaktureringsadress.setBounds(561, 254, 173, 23);
 		panelNyKund.add(lblFaktureringsadress);
 		
 		JLabel lblTelefonnummer = new JLabel("Telefonnummer");
 		lblTelefonnummer.setForeground(Color.DARK_GRAY);
 		lblTelefonnummer.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTelefonnummer.setBounds(561, 362, 144, 14);
+		lblTelefonnummer.setBounds(561, 329, 144, 23);
 		panelNyKund.add(lblTelefonnummer);
 		
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setForeground(Color.DARK_GRAY);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblEmail.setBounds(561, 445, 93, 14);
+		lblEmail.setBounds(561, 404, 93, 23);
 		panelNyKund.add(lblEmail);
 		
 
@@ -275,15 +280,30 @@ public class view {
 				String tmpFaktureringsAdress = txtFaktureringsAdress.getText();
 				String tmpTele = txtTele.getText();
 				String tmpEmail = txtEmail.getText();
+				String tmpAllergi = txtAllergi.getText();
 				int tmpDans = slider.getValue();
 				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
-				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
+				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAllergi, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
 				tableModel.addRow(kundInfo);
 				playSound(LaggTill);
 			}
 		});
 		btnLggTillKund.setBounds(561, 632, 489, 46);
 		panelNyKund.add(btnLggTillKund);
+		
+		txtAllergi = new JTextField();
+		txtAllergi.setOpaque(false);
+		txtAllergi.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtAllergi.setColumns(10);
+		txtAllergi.setBorder(new MatteBorder(0, 0, 2, 0, (Color) new Color(255, 204, 153)));
+		txtAllergi.setBounds(561, 513, 485, 30);
+		panelNyKund.add(txtAllergi);
+		
+		JLabel lblAllergi = new JLabel("Allergi");
+		lblAllergi.setForeground(Color.DARK_GRAY);
+		lblAllergi.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblAllergi.setBounds(561, 479, 78, 23);
+		panelNyKund.add(lblAllergi);
 		
 		panelEmailUtskick = new JPanel();
 		panelEmailUtskick.setVisible(false);
@@ -336,20 +356,25 @@ public class view {
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(338);
 		scrollPane_1.setViewportView(table_1);
 		
-		comboBox.setBounds(742, 14, 180, 22);
+		comboBox.setBounds(742, 42, 180, 22);
 		comboBox.addItem(1);
 		comboBox.addItem(2);
 		comboBox.addItem(3);
 		panelEmailUtskick.add(comboBox);
+		
+		JLabel lblDansexpertis = new JLabel("Dansexpertis");
+		lblDansexpertis.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDansexpertis.setBounds(742, 18, 108, 22);
+		panelEmailUtskick.add(lblDansexpertis);
 		panelKundRegister = new JPanel();
 		layeredPane.add(panelKundRegister, "name_720098978042300");
 		panelKundRegister.setBackground(SystemColor.window);
 		panelKundRegister.setLayout(null);
 		
-		JTextArea kundDetaljArea = new JTextArea();
-		kundDetaljArea.setVisible(false);
-		kundDetaljArea.setBounds(371, 0, 364, 357);
-		panelKundRegister.add(kundDetaljArea);
+//		JTextArea kundDetaljArea = new JTextArea();
+//		kundDetaljArea.setVisible(false);
+//		kundDetaljArea.setBounds(371, 0, 364, 357);
+//		panelKundRegister.add(kundDetaljArea);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -412,7 +437,7 @@ public class view {
 			
 			int i = table.getSelectedRow();
 			
-			if (i>=0 && kundDetaljArea.isShowing()==false) {
+			if (i>=0 ) {
 //				kundDetaljArea.setVisible(true);
 				String [] allInfo = controller.getKundInfo(table.getValueAt(i, 2).toString());
 				String kundInfo = "Namn: " + allInfo[0] + "\nPnr: " + allInfo[1] + "\nBostadsadress: " + allInfo[2] + "\nFaktureringsadress: " + allInfo[3] + "\nEmail: " + allInfo[4] 
@@ -436,7 +461,7 @@ public class view {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switchPanels(panelKundRegister);
-				kundDetaljArea.setVisible(false);
+//				kundDetaljArea.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(10, 6, 365, 96);
