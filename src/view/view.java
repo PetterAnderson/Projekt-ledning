@@ -284,19 +284,19 @@ public class view {
 				String tmpAllergi = txtAllergi.getText();
 				int tmpDans = slider.getValue();
 				String [] kundInfo = {tmpNamn, tmpEmail, tmpPnr, Integer.toString(tmpDans)};
-				
+				controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAllergi, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
 				if(!tmpPnr.isEmpty()) {
 					controller.addKund(tmpPnr, tmpNamn, tmpDans, tmpAllergi, tmpAdress, tmpFaktureringsAdress, tmpTele, tmpEmail);
 					tableModel.addRow(kundInfo);
 					errorLabel.setVisible(false);
+					playSound(LaggTill);
 				}
 				else {
 					errorLabel.setVisible(true);
 				}
 				
-				playSound(LaggTill);
+				
 			}
-		
 		});
 		btnLggTillKund.setBounds(561, 632, 489, 46);
 		panelNyKund.add(btnLggTillKund);
@@ -432,10 +432,11 @@ public class view {
 				
 				if (i>=0) {
 					
-					String pnbr = (String) model.getValueAt(i, 2);
+					String pnbr = (String) model.getValueAt(i, 2).toString();
 					controller.removeKund(pnbr);
-					JOptionPane.showMessageDialog(null,model.getValueAt(i, 0) + " är nu borttagen ut systemet.");
 					model.removeRow(i);
+					JOptionPane.showMessageDialog(null,model.getValueAt(i, 0) + " är nu borttagen ut systemet.");
+					
 				}
 				else {
 					playSound(Error);
